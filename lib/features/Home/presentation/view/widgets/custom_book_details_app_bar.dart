@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomBookDetailsAppBar extends StatelessWidget {
   const CustomBookDetailsAppBar({super.key});
@@ -9,11 +10,15 @@ class CustomBookDetailsAppBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, top: 40, bottom: 20),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        IconButton(onPressed: () {}, icon: const Icon(FontAwesomeIcons.xmark)),
+        IconButton(
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
+            icon: const Icon(FontAwesomeIcons.xmark)),
         IconButton(
             onPressed: () {},
             icon: const Icon(
-              FontAwesomeIcons.magnifyingGlass,
+              FontAwesomeIcons.cartShopping,
               size: 20,
             ))
       ]),
