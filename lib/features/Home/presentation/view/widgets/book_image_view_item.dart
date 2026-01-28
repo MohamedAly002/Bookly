@@ -3,8 +3,8 @@ import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BookViewItem extends StatelessWidget {
-  const BookViewItem({super.key});
+class BookImageViewItem extends StatelessWidget {
+  const BookImageViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {

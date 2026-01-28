@@ -1,4 +1,4 @@
-import 'package:bookly/features/Home/presentation/view/widgets/book_view_item.dart';
+import 'package:bookly/features/Home/presentation/view/widgets/book_image_view_item.dart';
 import 'package:flutter/material.dart';
 
 class BooksViewItemListView extends StatelessWidget {
@@ -14,7 +14,7 @@ class BooksViewItemListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.only(right: 15),
-            child: BookViewItem(),
+            child: BookImageViewItem(),
           );
         },
       ),
