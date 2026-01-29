@@ -18,11 +18,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
   late Animation<Offset> slidingAnimation;
   @override
   void initState() {
-     super.initState();
+    super.initState();
     initSlidingText();
     navigationToHomeView();
-
-   
   }
 
   @override
@@ -47,9 +45,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigationToHomeView() {
-     Future.delayed(const Duration(seconds: 2), () {
-     if (!mounted) return;
-    GoRouter.of(context).pushReplacement(AppRouters.homeView);
+    Future.delayed(const Duration(seconds: 2), () {
+      if (!mounted) return;
+      GoRouter.of(context).pushReplacement(AppRouters.homeView);
     });
   }
 
