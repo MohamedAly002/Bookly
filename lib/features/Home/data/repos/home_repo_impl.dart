@@ -29,7 +29,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await apiServices.get(
           endPoint:
-              'volumes?Filtering=free-ebooks&q=subject:Programming');
+              'volumes?Filtering=free-ebooks&q=subject:Programming&Sorting=newest');
       return right(BookModel.fromJson(data));
     } catch (e) {
       if (e is DioException){
