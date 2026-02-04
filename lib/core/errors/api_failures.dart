@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 
 abstract class ApiFailures {
@@ -34,9 +36,10 @@ class ServerFailures extends ApiFailures {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailures(response['error']['message']);
     } else if (statusCode == 404) {
-      return ServerFailures('Page not found');
+      return ServerFailures('Your request not found, Please try again!');
+      
     } else {
-      return ServerFailures('Unexpected error occurred, Please try again!');
+      return ServerFailures('Something went wrong, Please try again!');
     }
   }
 }
