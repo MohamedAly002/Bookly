@@ -22,7 +22,7 @@ class Errorwidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.image_not_supported_outlined,
+            Icons.error,
             size: 48,
             color: Colors.grey.shade500,
           ),

@@ -2,6 +2,7 @@ import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/Home/presentation/view/widgets/newest_book_item.dart';
 import 'package:bookly/features/Home/presentation/view/widgets/custom_home_app_bar.dart';
 import 'package:bookly/features/Home/presentation/view/widgets/featured_books_listview.dart';
+import 'package:bookly/features/Home/presentation/view/widgets/newest_books_listview.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -9,8 +10,8 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers: [
-      const SliverToBoxAdapter(
+    return const CustomScrollView(slivers: [
+      SliverToBoxAdapter(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,18 +32,10 @@ class HomeViewBody extends StatelessWidget {
           ),
         ],
       )),
-      SliverPadding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        sliver: SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: NewestBookItem(),
-            ),
-            childCount: 10,
-          ),
+ SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          sliver: NewestBooksListView(),
         ),
-      ),
     ]);
   }
 }

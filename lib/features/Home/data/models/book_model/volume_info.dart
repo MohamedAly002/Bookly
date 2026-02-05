@@ -8,6 +8,8 @@ import 'reading_modes.dart';
 class VolumeInfo extends Equatable {
   final String? title;
   final List<String>? authors;
+  final double? averageRating;
+  final int? ratingsCount;
   final String? publishedDate;
   final List<IndustryIdentifier>? industryIdentifiers;
   final ReadingModes? readingModes;
@@ -27,6 +29,8 @@ class VolumeInfo extends Equatable {
   const VolumeInfo({
     this.title,
     this.authors,
+    this.averageRating,
+    this.ratingsCount,
     this.publishedDate,
     this.industryIdentifiers,
     this.readingModes,
@@ -70,6 +74,8 @@ class VolumeInfo extends Equatable {
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,
         canonicalVolumeLink: json['canonicalVolumeLink'] as String?,
+        averageRating: json['averageRating']?.toDouble(),
+        ratingsCount: json['ratingsCount'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,11 +92,13 @@ class VolumeInfo extends Equatable {
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toJson(),
-        'imageLinks': imageLinks?.toJson(),
+        'imageLinks': imageLinks.toJson(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
         'canonicalVolumeLink': canonicalVolumeLink,
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
       };
 
   @override
