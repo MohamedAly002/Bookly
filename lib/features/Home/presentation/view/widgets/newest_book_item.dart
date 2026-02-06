@@ -1,19 +1,15 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/app_routers.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/Home/data/models/book_model/item.dart';
 import 'package:bookly/features/Home/presentation/view/widgets/book_rating.dart';
+import 'package:bookly/features/Home/presentation/view/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class NewestBookItem extends StatelessWidget {
-  const NewestBookItem({super.key, required this.imagurl, required this.title, required this.author,  required this.rating, required this.ratingCount});
-  final String imagurl;
-  final String title;
-  final String author;
-  final String? rating;
-  final String? ratingCount;
-
+  const NewestBookItem({super.key, required this.bookItem});
+  final Item bookItem;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -26,14 +22,8 @@ class NewestBookItem extends StatelessWidget {
           children: [
             AspectRatio(
                 aspectRatio: 2.6 / 4,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: CachedNetworkImage(
-                    imageUrl: imagurl,
-                    fit: BoxFit.fill,
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
+                child: CustomBookImage(
+                  imagurl: bookItem.volumeInfo.imageLinks?.thumbnail??'',
                 )),
             const SizedBox(
               width: 30,
@@ -45,7 +35,7 @@ class NewestBookItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: Text(
-                        title,
+                        bookItem.volumeInfo.title ?? 'Unknown Title',
                         style: Styles.textStyle20
                             .copyWith(fontFamily: kGtSectraFine),
                         maxLines: 2,
@@ -54,21 +44,30 @@ class NewestBookItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      author,
+                      bookItem.volumeInfo.authors?[0] ??
+                          'Unknown Author',
                       style: Styles.textStyle14
                           .copyWith(color: Colors.grey.shade400),
+                          maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(
                       height: 11,
                     ),
-                     Row(
+                    Row(
                       children: [
                         const Text(
                           'Free',
                           style: Styles.textStyle20,
                         ),
                         const Spacer(),
-                        BookRating(rating: rating, ratingcount: ratingCount),
+                        BookRating(
+                          rating: bookItem.volumeInfo.averageRating
+                              ?.toString(),
+                          ratingcount: bookItem
+                              .volumeInfo.ratingsCount
+                              ?.toString(),
+                        ),
                       ],
                     ),
                   ]),

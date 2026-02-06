@@ -13,10 +13,11 @@ class SearchResultListview extends StatelessWidget {
         itemCount: 10,
         itemBuilder: (context, index) => const Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
-          child: NewestBookItem(imagurl: 'https://www.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_27271706.htm#fromView=keyword&page=1&position=0&uuid=cdfed68e-9a5e-4468-a8f7-5c8932e0099d&query=Animale',
-              title: 'The Jungle Book', author: 'Rudyard Kipling', rating: '4.5', ratingCount: '(2.3k)',),
+          child: Text('data'),
+          // child: NewestBookItem(imagurl: 'https://www.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_27271706.htm#fromView=keyword&page=1&position=0&uuid=cdfed68e-9a5e-4468-a8f7-5c8932e0099d&query=Animale',
+            ),
         ),
-      ),
+      
     );
   }
 }

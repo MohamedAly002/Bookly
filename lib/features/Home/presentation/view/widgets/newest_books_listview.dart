@@ -18,16 +18,7 @@ class NewestBooksListView extends StatelessWidget {
               (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: NewestBookItem(
-                  imagurl: state.books.items![index]
-                      .volumeInfo
-                      .imageLinks
-                      .thumbnail,
-                  title: state.books.items![index].volumeInfo.title??"unknown title",
-                  author: state.books.items![index].volumeInfo.authors![0],
-                  rating: state.books.items![index].volumeInfo.averageRating?.toString(),
-                  ratingCount: state.books.items![index].volumeInfo.ratingsCount?.toString(),
-                  
-
+                  bookItem: state.books.items![index],
                 ),
               ),
             ),

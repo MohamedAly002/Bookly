@@ -1,5 +1,4 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/newest_book_item.dart';
 import 'package:bookly/features/Home/presentation/view/widgets/custom_home_app_bar.dart';
 import 'package:bookly/features/Home/presentation/view/widgets/featured_books_listview.dart';
 import 'package:bookly/features/Home/presentation/view/widgets/newest_books_listview.dart';

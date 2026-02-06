@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -17,7 +18,9 @@ class BookDetailsViewBody extends StatelessWidget {
         const CustomBookDetailsAppBar(),
         SizedBox(
           width: screenWidth * 0.45,
-          child: const FeaturedBookImageItem(imageUrl:'https://www.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_27271706.htm#fromView=keyword&page=1&position=0&uuid=cdfed68e-9a5e-4468-a8f7-5c8932e0099d&query=Animale'),
+          child: const FeaturedBookImageItem(
+              imageUrl:
+                  'https://www.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_27271706.htm#fromView=keyword&page=1&position=0&uuid=cdfed68e-9a5e-4468-a8f7-5c8932e0099d&query=Animale'),
         ),
         const SizedBox(
           height: 30,
