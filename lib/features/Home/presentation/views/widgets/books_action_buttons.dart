@@ -1,3 +1,4 @@
+import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class BooksActionButtons extends StatelessWidget {
         children: [
           Expanded(
               child: CustomTextButton(
-                  text: 'Free',
+                  text: AppStrings.freeprice,
                   textColor: Colors.black,
                   backgroundColor: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -21,7 +22,7 @@ class BooksActionButtons extends StatelessWidget {
                   ))),
           Expanded(
               child: CustomTextButton(
-                  text: 'Free preview',
+                  text: AppStrings.freepreview,
                   textColor: Colors.white,
                   backgroundColor: Color(0xffEF8262),
                   borderRadius: BorderRadius.only(

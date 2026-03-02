@@ -1,3 +1,4 @@
+import 'package:bookly/core/strings/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -12,7 +13,7 @@ class CustomSearchTextfield extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: TextField(
           decoration: InputDecoration(
-        hintText: 'Search for your favorite books',
+        hintText: AppStrings.searchHintText,
         hintStyle: TextStyle(color: Colors.grey),
         suffixIcon: Icon(
           FontAwesomeIcons.magnifyingGlass,

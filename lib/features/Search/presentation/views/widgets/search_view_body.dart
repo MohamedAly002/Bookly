@@ -1,3 +1,4 @@
+import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/Search/presentation/views/widgets/custom_search_textfield.dart';
 import 'package:bookly/features/Search/presentation/views/widgets/search_result_listview.dart';
@@ -15,7 +16,7 @@ class SearchViewBody extends StatelessWidget {
         Align(
             alignment: Alignment.topLeft,
             child: Text(
-              'Search Result',
+              AppStrings.searchResult,
               style: Styles.textStyle18,
             )),
         SizedBox(
