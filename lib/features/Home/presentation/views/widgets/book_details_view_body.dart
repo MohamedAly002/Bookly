@@ -1,10 +1,11 @@
+import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/core/models/book_model/item.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/book_rating.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/featured_book_image_item.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/books_action_buttons.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/custom_book_details_app_bar.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/similar_books_listview.dart';
+import 'package:bookly/config/models/book_model/item.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/featured_book_image_item.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/books_action_buttons.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/custom_book_details_app_bar.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/similar_books_listview.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -62,7 +63,7 @@ class BookDetailsViewBody extends StatelessWidget {
               child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'You might also like',
+                    AppStrings.similarBooksTitle,
                     style: Styles.textStyle16,
                   )),
             ),

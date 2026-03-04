@@ -1,9 +1,10 @@
-import 'package:bookly/constants.dart';
-import 'package:bookly/core/utils/app_routers.dart';
+import 'package:bookly/core/constants/constants.dart';
+import 'package:bookly/config/app_routers/app_routers.dart';
+import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/core/models/book_model/item.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/book_rating.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/custom_book_image.dart';
+import 'package:bookly/config/models/book_model/item.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -57,7 +58,7 @@ class NewestBookItem extends StatelessWidget {
                     Row(
                       children: [
                         const Text(
-                          'Free',
+                          AppStrings.freeprice,
                           style: Styles.textStyle20,
                         ),
                         const Spacer(),

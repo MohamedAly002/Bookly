@@ -1,7 +1,8 @@
+import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/custom_home_app_bar.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/featured_books_listview.dart';
-import 'package:bookly/features/Home/presentation/view/widgets/newest_books_listview.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/custom_home_app_bar.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/featured_books_listview.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/newest_books_listview.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -24,7 +25,7 @@ class HomeViewBody extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Text(
-              'Newest Books',
+              AppStrings.newestBooktitle,
               style: Styles.textStyle18,
             ),
           ),
