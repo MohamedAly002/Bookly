@@ -1,6 +1,6 @@
 import 'package:bookly/config/errors/api_failures.dart';
 import 'package:bookly/config/api_services/api_services.dart';
-import 'package:bookly/core/endpoints/endpoints.dart';
+import 'package:bookly/config/values/endpoints/endpoints.dart';
 import 'package:bookly/config/models/book_model/book_model.dart';
 import 'package:bookly/features/Home/data/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
