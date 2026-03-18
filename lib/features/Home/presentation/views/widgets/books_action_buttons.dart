@@ -1,17 +1,21 @@
+import 'package:bookly/config/models/book_model/item.dart';
 import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/widgets/custom_text_button.dart';
+import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BooksActionButtons extends StatelessWidget {
-  const BooksActionButtons({super.key});
+  const BooksActionButtons({super.key, required this.itemModel});
+  final Item itemModel;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         children: [
-          Expanded(
+          const Expanded(
               child: CustomTextButton(
                   text: AppStrings.freeprice,
                   textColor: Colors.black,
@@ -22,10 +26,15 @@ class BooksActionButtons extends StatelessWidget {
                   ))),
           Expanded(
               child: CustomTextButton(
+                  onPressed: () {
+                    context.read<BooksDetailsCubit>().urlLauncher(
+                          itemModel.volumeInfo.previewLink,
+                        );
+                  },
                   text: AppStrings.freepreview,
                   textColor: Colors.white,
-                  backgroundColor: Color(0xffEF8262),
-                  borderRadius: BorderRadius.only(
+                  backgroundColor: const Color(0xffEF8262),
+                  borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(18),
                     bottomLeft: Radius.circular(18),
                   ))),
