@@ -1,5 +1,6 @@
 import 'package:bookly/config/errors/error_widget.dart';
-import 'package:bookly/features/Home/presentation/view_model/home_cubit/newest_books_cubit.dart';
+import 'package:bookly/features/Home/presentation/view_model/home_cubit/home_cubit.dart';
+import 'package:bookly/features/Home/presentation/view_model/home_cubit/home_cubit_states.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/newest_book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,23 +10,23 @@ class NewestBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewestBooksCubit, NewestBooksState>(
+    return BlocBuilder<HomeCubit, HomeCubitStates>(
       builder: (context, state) {
-        if (state is NewestBooksSuccess) {
+        if (state.getNewestBooks.data != null) {
           return SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: state.books.items!.length,
+              childCount: state.getNewestBooks.data!.items!.length,
               (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: NewestBookItem(
-                  bookItem: state.books.items![index],
+                  bookItem: state.getNewestBooks.data!.items![index],
                 ),
               ),
             ),
           );
-        } else if (state is NewestBooksFailure) {
+        } else if (state.getNewestBooks.errorMessage != null) {
           return SliverToBoxAdapter(
-            child: Errorwidget(message: state.errormessage),
+            child: Errorwidget(message: state.getNewestBooks.errorMessage!),
           );
         } else {
           return const SliverToBoxAdapter(

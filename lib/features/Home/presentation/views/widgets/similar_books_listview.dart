@@ -1,5 +1,6 @@
 import 'package:bookly/config/errors/error_widget.dart';
 import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_cubit.dart';
+import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_states.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/featured_book_image_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,9 +10,9 @@ class SimilarBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BooksDetailsCubit, BooksDetailsState>(
+    return BlocBuilder<BooksDetailsCubit, BooksDetailsStates>(
         builder: (context, state) {
-      if (state is BooksDetailsSuccess) {
+      if (state.getSimilarBooksState.data != null) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: SizedBox(
@@ -24,9 +25,9 @@ class SimilarBooksListView extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 5),
                   child: FeaturedBookImageItem(
-                    bookItem: state.books.items![index],
-                    imageUrl: state.books.items![index].volumeInfo.imageLinks
-                            ?.thumbnail ??
+                    bookItem: state.getSimilarBooksState.data!.items![index],
+                    imageUrl: state.getSimilarBooksState.data!.items![index]
+                            .volumeInfo.imageLinks?.thumbnail ??
                         '',
                   ),
                 );
@@ -34,8 +35,8 @@ class SimilarBooksListView extends StatelessWidget {
             ),
           ),
         );
-      } else if (state is BooksDetailsFailure) {
-        return Errorwidget(message: state.errormessage);
+      } else if (state.getSimilarBooksState.errorMessage != null) {
+        return Errorwidget(message: state.getSimilarBooksState.errorMessage!);
       } else {
         return const Center(child: CircularProgressIndicator());
       }

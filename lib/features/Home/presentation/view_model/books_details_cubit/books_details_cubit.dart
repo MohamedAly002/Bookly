@@ -1,41 +1,61 @@
-import 'dart:developer';
-
-import 'package:bookly/config/models/book_model/book_model.dart';
 import 'package:bookly/features/Home/data/repo/home_repo.dart';
-import 'package:equatable/equatable.dart';
+import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-part 'books_details_cubit_state.dart';
-
-class BooksDetailsCubit extends Cubit<BooksDetailsState> {
-  BooksDetailsCubit(this.homeRepo) : super(BooksDetailsInitial());
+class BooksDetailsCubit extends Cubit<BooksDetailsStates> {
+  BooksDetailsCubit(this.homeRepo) : super(BooksDetailsStates());
 
   final HomeRepo homeRepo;
   Future<void> fetchSimilarBooks({required String category}) async {
-    emit(BooksDetailsLoading());
+    emit(state.copyWith(
+        getSimilarBooksState:
+            state.getSimilarBooksState.copyWith(isLoadingParam: true)));
     var result = await homeRepo.fetchSimilarBooks(category: category);
     result.fold((failure) {
-      emit(BooksDetailsFailure(failure.errormessage));
+      emit(state.copyWith(
+        getSimilarBooksState: state.getSimilarBooksState.copyWith(
+          errorMessageParam: failure.errormessage,
+        ),
+      ));
     }, (books) {
-      emit(BooksDetailsSuccess(books));
+      emit(state.copyWith(
+        getSimilarBooksState: state.getSimilarBooksState.copyWith(
+          dataParam: books,
+        ),
+      ));
     });
   }
-  Future <void> urlLauncher(String? link) async {       
-                  if (link == null) {
-                    log("No preview link available");
-                    return;
-                  }
-                  final Uri url = Uri.parse(link);
-                  if (await canLaunchUrl(url)) {
-                    await launchUrl(
-                      url,
-                      mode:
-                          LaunchMode.inAppBrowserView, // opens inside the app
-                    );
-                  } else {
-                    throw 'Could not launch $url';
-                  }
-                }
 
+  Future<void> urlLauncher(String? link) async {
+    if (link == null) {
+      emit(state.copyWith(
+        previewBookState: state.previewBookState
+            .copyWith(errorMessageParam: 'Sorry no preview link found'),
+      ));
+      return;
+    }
+
+    final Uri url = Uri.parse(link);
+    if (await canLaunchUrl(url)) {
+      emit(state.copyWith(
+        previewBookState: state.previewBookState.copyWith(isLoadingParam: true),
+      ));
+      await Future.delayed(const Duration(milliseconds: 200));
+
+      await launchUrl(
+        url,
+        mode: LaunchMode.inAppBrowserView, // opens inside the app
+      );
+      emit(state.copyWith(
+        previewBookState:
+            state.previewBookState.copyWith(isLoadingParam: false),
+      ));
+    } else {
+      emit(state.copyWith(
+        previewBookState: state.previewBookState.copyWith(
+            errorMessageParam: 'something went wrong, Please try again'),
+      ));
+    }
+  }
 }
