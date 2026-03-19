@@ -1,12 +1,8 @@
-import 'package:bookly/config/service_locator/service_locator.dart';
 import 'package:bookly/config/models/book_model/item.dart';
-import 'package:bookly/features/Home/data/repo/home_repo_impl.dart';
-import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_cubit.dart';
 import 'package:bookly/features/Home/presentation/views/book_details_view.dart';
 import 'package:bookly/features/Home/presentation/views/home_view.dart';
 import 'package:bookly/features/Search/presentation/views/search_view.dart';
 import 'package:bookly/features/Splash/presentation/views/splash_view.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouters {
