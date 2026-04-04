@@ -1,4 +1,4 @@
-import 'package:bookly/config/app_routers/app_routers.dart';
+import 'package:bookly/config/app_routers/router_paths.dart';
 import 'package:bookly/features/Home/domain/models/items_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class FeaturedBookImageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => GoRouter.of(context).push(
-        AppRouters.bookDetailsView,
+       RouterPaths.bookDetailsView,
         extra: bookItem,
       ),
       child: AspectRatio(

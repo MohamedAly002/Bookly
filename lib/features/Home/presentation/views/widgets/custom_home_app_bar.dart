@@ -1,4 +1,4 @@
-import 'package:bookly/config/app_routers/app_routers.dart';
+import 'package:bookly/config/app_routers/router_paths.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,7 +19,7 @@ class CustomHomeAppBar extends StatelessWidget {
         const Spacer(),
         IconButton(
             onPressed: () {
-              GoRouter.of(context).push(AppRouters.searchView);
+              GoRouter.of(context).push(RouterPaths.searchView);
             },
             icon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
