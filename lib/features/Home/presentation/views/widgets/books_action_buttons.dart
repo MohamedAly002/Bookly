@@ -1,4 +1,4 @@
-import 'package:bookly/core/strings/app_strings.dart';
+import 'package:bookly/core/values/strings/app_strings.dart';
 import 'package:bookly/core/utils/functions/show_snack_bar.dart';
 import 'package:bookly/core/widgets/custom_text_button.dart';
 import 'package:bookly/features/Home/domain/models/items_model.dart';

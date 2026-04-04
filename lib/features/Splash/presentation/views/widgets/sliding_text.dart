@@ -1,4 +1,4 @@
-import 'package:bookly/core/strings/app_strings.dart';
+import 'package:bookly/core/values/strings/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class SlidingText extends StatelessWidget {

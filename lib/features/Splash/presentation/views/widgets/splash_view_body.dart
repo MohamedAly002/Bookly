@@ -1,5 +1,5 @@
 import 'package:bookly/config/app_routers/router_paths.dart';
-import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/core/values/assets/assets_paths.dart';
 import 'package:bookly/features/Splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

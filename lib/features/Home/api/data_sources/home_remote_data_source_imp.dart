@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bookly/config/api_client/books_api_client.dart';
 import 'package:bookly/config/errors/api_failures.dart';
 import 'package:bookly/config/models/book_dto/book_model_dto.dart';
-import 'package:bookly/config/values/endpoints/api_endpoints.dart';
+import 'package:bookly/core/values/endpoints/api_endpoints.dart';
 import 'package:bookly/features/Home/data/data_sources/home_remote_data_source_contract.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
