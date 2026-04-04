@@ -1,11 +1,12 @@
 import 'package:bookly/config/base_state/base_state.dart';
-import 'package:bookly/config/models/book_model/book_model.dart';
+import 'package:bookly/config/models/book_dto/book_model_dto.dart';
+import 'package:bookly/features/Home/domain/models/book_model.dart';
 
 class BooksDetailsStates {
-  BaseState<BookModel> getSimilarBooksState = BaseState<BookModel>(
+  BaseState<BooksModel> getSimilarBooksState = BaseState<BooksModel>(
     isLoading: true,
   );
-  BaseState<BookModel> previewBookState = BaseState<BookModel>(
+  BaseState<BooksModel> previewBookState = BaseState<BooksModel>(
     isLoading: false,
   );
 
@@ -19,8 +20,8 @@ class BooksDetailsStates {
   }
 
   BooksDetailsStates copyWith({
-    final BaseState<BookModel>? getSimilarBooksState,
-    final BaseState<BookModel>? previewBookState,
+    final BaseState<BooksModel>? getSimilarBooksState,
+    final BaseState<BooksModel>? previewBookState,
   }) {
     return BooksDetailsStates(
       getSimilarBooksState: getSimilarBooksState ?? this.getSimilarBooksState,

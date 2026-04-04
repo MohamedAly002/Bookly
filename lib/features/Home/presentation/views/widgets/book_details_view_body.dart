@@ -1,6 +1,6 @@
 import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/config/models/book_model/item.dart';
+import 'package:bookly/features/Home/domain/models/items_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/featured_book_image_item.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/books_action_buttons.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key, required this.bookitem});
-  final Item bookitem;
+  final ItemsModel bookitem;
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +25,20 @@ class BookDetailsViewBody extends StatelessWidget {
               width: screenWidth * 0.45,
               child: FeaturedBookImageItem(
                   bookItem: bookitem,
-                  imageUrl: bookitem.volumeInfo.imageLinks?.thumbnail ?? ''),
+                  imageUrl: bookitem.volumeInfo.imageLink),
             ),
             const SizedBox(
               height: 30,
             ),
             Text(
-              bookitem.volumeInfo.title ?? 'Unknown Title',
+              bookitem.volumeInfo.title ,
               style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w400),
               textAlign: TextAlign.center,
             ),
             Opacity(
               opacity: 0.7,
               child: Text(
-                bookitem.volumeInfo.authors?[0] ?? 'Unknown Author',
+                bookitem.volumeInfo.authors[0] ,
                 style: Styles.textStyle18.copyWith(fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
               ),
@@ -46,15 +46,15 @@ class BookDetailsViewBody extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-             BookRating(
+            BookRating(
               mainAxisAlignment: MainAxisAlignment.center,
-              rating: "${bookitem.volumeInfo.averageRating??"0.0"}",
-              ratingcount: '${bookitem.volumeInfo.ratingsCount??'0'}',
+              rating: "${bookitem.volumeInfo.averageRating }",
+              ratingcount: '${bookitem.volumeInfo.ratingsCount }',
             ),
             const SizedBox(
               height: 20,
             ),
-             BooksActionButtons(
+            BooksActionButtons(
               itemModel: bookitem,
             ),
             const SizedBox(

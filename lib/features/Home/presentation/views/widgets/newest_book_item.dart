@@ -2,7 +2,7 @@ import 'package:bookly/core/constants/constants.dart';
 import 'package:bookly/config/app_routers/app_routers.dart';
 import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/config/models/book_model/item.dart';
+import 'package:bookly/features/Home/domain/models/items_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 
 class NewestBookItem extends StatelessWidget {
   const NewestBookItem({super.key, required this.bookItem});
-  final Item bookItem;
+  final ItemsModel bookItem;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,7 +24,7 @@ class NewestBookItem extends StatelessWidget {
             AspectRatio(
                 aspectRatio: 2.6 / 4,
                 child: CustomBookImage(
-                  imagurl: bookItem.volumeInfo.imageLinks?.thumbnail??'',
+                  imagurl: bookItem.volumeInfo.imageLink,
                 )),
             const SizedBox(
               width: 30,
@@ -36,7 +36,7 @@ class NewestBookItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: Text(
-                        bookItem.volumeInfo.title ?? 'Unknown Title',
+                        bookItem.volumeInfo.title ,
                         style: Styles.textStyle20
                             .copyWith(fontFamily: kGtSectraFine),
                         maxLines: 2,
@@ -45,12 +45,11 @@ class NewestBookItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      bookItem.volumeInfo.authors?[0] ??
-                          'Unknown Author',
+                      bookItem.volumeInfo.authors[0] ,
                       style: Styles.textStyle14
                           .copyWith(color: Colors.grey.shade400),
-                          maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(
                       height: 11,
@@ -63,11 +62,9 @@ class NewestBookItem extends StatelessWidget {
                         ),
                         const Spacer(),
                         BookRating(
-                          rating: bookItem.volumeInfo.averageRating
-                              ?.toString(),
-                          ratingcount: bookItem
-                              .volumeInfo.ratingsCount
-                              ?.toString(),
+                          rating: bookItem.volumeInfo.averageRating.toString(),
+                          ratingcount:
+                              bookItem.volumeInfo.ratingsCount.toString(),
                         ),
                       ],
                     ),

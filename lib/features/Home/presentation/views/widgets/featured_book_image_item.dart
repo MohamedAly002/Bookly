@@ -1,14 +1,15 @@
 import 'package:bookly/config/app_routers/app_routers.dart';
-import 'package:bookly/config/models/book_model/item.dart';
+import 'package:bookly/features/Home/domain/models/items_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class FeaturedBookImageItem extends StatelessWidget {
-  const FeaturedBookImageItem({super.key, required this.imageUrl, required this.bookItem});
+  const FeaturedBookImageItem(
+      {super.key, required this.imageUrl, required this.bookItem});
 
   final String imageUrl;
-  final Item bookItem;
+  final ItemsModel bookItem;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

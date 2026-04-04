@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class Epub extends Equatable {
+class EpubDto extends Equatable {
   final bool? isAvailable;
   final String? downloadLink;
 
-  const Epub({this.isAvailable, this.downloadLink});
+  const EpubDto({this.isAvailable, this.downloadLink});
 
-  factory Epub.fromJson(Map<String, dynamic> json) => Epub(
+  factory EpubDto.fromJson(Map<String, dynamic> json) => EpubDto(
         isAvailable: json['isAvailable'] as bool?,
         downloadLink: json['downloadLink'] as String?,
       );

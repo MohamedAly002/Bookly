@@ -1,19 +1,19 @@
 import 'package:equatable/equatable.dart';
 
-class SaleInfo extends Equatable {
+class SaleInfoDto extends Equatable {
   final String? country;
   final String? saleability;
   final bool? isEbook;
   final String? buyLink;
 
-  const SaleInfo({
+  const SaleInfoDto({
     this.country,
     this.saleability,
     this.isEbook,
     this.buyLink,
   });
 
-  factory SaleInfo.fromJson(Map<String, dynamic> json) => SaleInfo(
+  factory SaleInfoDto.fromJson(Map<String, dynamic> json) => SaleInfoDto(
         country: json['country'] as String?,
         saleability: json['saleability'] as String?,
         isEbook: json['isEbook'] as bool?,

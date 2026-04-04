@@ -1,13 +1,20 @@
+import 'package:bookly/core/strings/app_strings.dart';
 import 'package:dio/dio.dart';
 
 abstract class ApiFailures {
   final String errormessage;
-
   const ApiFailures(this.errormessage);
 }
 
 class ServerFailures extends ApiFailures {
   ServerFailures(super.errormessage);
+  static ServerFailures failureHandler(Object e) {
+    if (e is DioException) {
+      return ServerFailures.fromDioError(e);
+    } else {
+      return ServerFailures(AppStrings.errorMessage);
+    }
+  }
 
   factory ServerFailures.fromDioError(DioException dioErorr) {
     switch (dioErorr.type) {

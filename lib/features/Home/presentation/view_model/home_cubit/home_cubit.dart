@@ -1,11 +1,14 @@
-import 'package:bookly/features/Home/data/repo/home_repo.dart';
+import 'package:bookly/features/Home/domain/repo/home_repo_contract.dart';
+import 'package:bookly/features/Home/domain/use_cases/get_featured_books_use_case.dart';
+import 'package:bookly/features/Home/domain/use_cases/get_newest_books_use_case.dart';
 import 'package:bookly/features/Home/presentation/view_model/home_cubit/home_cubit_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:injectable/injectable.dart';
+@injectable
 class HomeCubit extends Cubit<HomeCubitStates> {
-  HomeCubit(this.homeRepo) : super(HomeCubitStates());
-    final HomeRepo homeRepo;
-
+  HomeCubit(this.getFeaturedBooksUseCase, this.getNewestBooksUseCase) : super(HomeCubitStates());
+final GetFeaturedBooksUseCase getFeaturedBooksUseCase;
+final GetNewestBooksUseCase getNewestBooksUseCase;
   void init() {
     fetchFeaturedBooks();
     fetchNewestBooks();
@@ -17,7 +20,7 @@ class HomeCubit extends Cubit<HomeCubitStates> {
         isLoadingParam: true,
       ),
     ));
-    var result = await homeRepo.fetchFeaturedBooks();
+    var result = await getFeaturedBooksUseCase.call();
     result.fold((failure) {
       emit(state.copyWith(
         getFeaturedBooks: state.getFeaturedBooks.copyWith(
@@ -36,7 +39,7 @@ class HomeCubit extends Cubit<HomeCubitStates> {
   Future<void> fetchNewestBooks() async {
     emit(state.copyWith(
         getNewestBooks: state.getNewestBooks.copyWith(isLoadingParam: true)));
-    var result = await homeRepo.fetchNewestBooks();
+    var result = await getNewestBooksUseCase.call();
     result.fold((failure) {
       emit(state.copyWith(
         getNewestBooks: state.getNewestBooks.copyWith(

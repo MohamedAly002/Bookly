@@ -17,22 +17,21 @@ class FeaturedBooksListView extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.3,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: state.getFeaturedBooks.data!.items?.length,
+              itemCount: state.getFeaturedBooks.data!.items.length,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 15),
                   child: FeaturedBookImageItem(
-                      bookItem: state.getFeaturedBooks.data!.items![index],
-                      imageUrl: state.getFeaturedBooks.data!.items![index]
-                              .volumeInfo.imageLinks?.thumbnail ??
-                          ''),
+                      bookItem: state.getFeaturedBooks.data!.items[index],
+                      imageUrl: state.getFeaturedBooks.data!.items[index]
+                          .volumeInfo.imageLink),
                 );
               },
             ),
           );
         } else if (state.getFeaturedBooks.errorMessage != null) {
-          return Errorwidget(message: state.getFeaturedBooks.errorMessage!);
+          return SliverToBoxAdapter(child: ShowErrorWidget(message: state.getFeaturedBooks.errorMessage!));
         } else {
           return const Center(child: CircularProgressIndicator());
         }

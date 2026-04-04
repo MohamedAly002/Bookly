@@ -1,59 +1,40 @@
 import 'package:bookly/config/errors/api_failures.dart';
-import 'package:bookly/config/api_services/api_services.dart';
-import 'package:bookly/config/values/endpoints/endpoints.dart';
-import 'package:bookly/config/models/book_model/book_model.dart';
-import 'package:bookly/features/Home/data/repo/home_repo.dart';
+import 'package:bookly/features/Home/data/data_sources/home_remote_data_source_contract.dart';
+import 'package:bookly/features/Home/domain/models/book_model.dart';
+import 'package:bookly/features/Home/domain/repo/home_repo_contract.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
-class HomeRepoImpl implements HomeRepo {
-  final ApiServices apiServices;
+@Injectable(as: HomeRepoContract)
+class HomeRepoImpl implements HomeRepoContract {
+  final HomeRemoteDataSourceContract homeRemoteDataSource;
 
-  HomeRepoImpl(this.apiServices);
+  HomeRepoImpl(this.homeRemoteDataSource);
   @override
-  Future<Either<ApiFailures, BookModel>> fetchFeaturedBooks() async {
-    try {
-      var data = await apiServices.get(
-          endPoint:
-              ApiEndpoints.featuredBooks);
-      return right(BookModel.fromJson(data));
-    } catch (e) {
-      if (e is DioException){
-        return left(ServerFailures.fromDioError(e));
-      }
-      return left(ServerFailures(e.toString()));
-    }
+  Future<Either<ApiFailures, BooksModel>> fetchFeaturedBooks() async {
+    var data = await homeRemoteDataSource.fetchFeaturedBooks();
+    return (data).fold(
+      (failure) => left(failure),
+      (dto) => right(dto.todomain()),
+    );
   }
 
   @override
-  Future<Either<ApiFailures, BookModel>> fetchNewestBooks()async {
-    try {
-      var data = await apiServices.get(
-          endPoint:
-              ApiEndpoints.newestBooks);
-      return right(BookModel.fromJson(data));
-    } catch (e) {
-      if (e is DioException){
-        return left(ServerFailures.fromDioError(e));
-      }
-      return left(ServerFailures(e.toString()));
-    }
-   
+  Future<Either<ApiFailures, BooksModel>> fetchNewestBooks() async {
+    var data = await homeRemoteDataSource.fetchNewestBooks();
+    return data.fold(
+      (failure) => left(failure),
+      (dto) => right(dto.todomain()),
+    );
   }
 
   @override
-  Future<Either<ApiFailures, BookModel>> fetchSimilarBooks({required String category})async {
-    try {
-      var data = await apiServices.get(
-          endPoint:
-              '${ApiEndpoints.similarBooks}$category');
-      return right(BookModel.fromJson(data));
-    } catch (e) {
-      if (e is DioException){
-        return left(ServerFailures.fromDioError(e));
-      }
-      return left(ServerFailures(e.toString()));
-    }
-   
+  Future<Either<ApiFailures, BooksModel>> fetchSimilarBooks(
+      {required String category}) async {
+    var data = await homeRemoteDataSource.fetchSimilarBooks(category: category);
+    return data.fold(
+      (failure) => left(failure),
+      (dto) => right(dto.todomain()),
+    );
   }
 }

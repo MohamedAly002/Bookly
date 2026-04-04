@@ -1,21 +1,21 @@
 import 'package:equatable/equatable.dart';
 
-import 'epub.dart';
-import 'pdf.dart';
+import 'epub_dto.dart';
+import 'pdf_dto.dart';
 
-class AccessInfo extends Equatable {
+class AccessInfoDto extends Equatable {
   final String? country;
   final String? viewability;
   final bool? embeddable;
   final bool? publicDomain;
   final String? textToSpeechPermission;
-  final Epub? epub;
-  final Pdf? pdf;
+  final EpubDto? epub;
+  final PdfDto? pdf;
   final String? webReaderLink;
   final String? accessViewStatus;
   final bool? quoteSharingAllowed;
 
-  const AccessInfo({
+  const AccessInfoDto({
     this.country,
     this.viewability,
     this.embeddable,
@@ -28,7 +28,7 @@ class AccessInfo extends Equatable {
     this.quoteSharingAllowed,
   });
 
-  factory AccessInfo.fromJson(Map<String, dynamic> json) => AccessInfo(
+  factory AccessInfoDto.fromJson(Map<String, dynamic> json) => AccessInfoDto(
         country: json['country'] as String?,
         viewability: json['viewability'] as String?,
         embeddable: json['embeddable'] as bool?,
@@ -36,10 +36,10 @@ class AccessInfo extends Equatable {
         textToSpeechPermission: json['textToSpeechPermission'] as String?,
         epub: json['epub'] == null
             ? null
-            : Epub.fromJson(json['epub'] as Map<String, dynamic>),
+            : EpubDto.fromJson(json['epub'] as Map<String, dynamic>),
         pdf: json['pdf'] == null
             ? null
-            : Pdf.fromJson(json['pdf'] as Map<String, dynamic>),
+            : PdfDto.fromJson(json['pdf'] as Map<String, dynamic>),
         webReaderLink: json['webReaderLink'] as String?,
         accessViewStatus: json['accessViewStatus'] as String?,
         quoteSharingAllowed: json['quoteSharingAllowed'] as bool?,

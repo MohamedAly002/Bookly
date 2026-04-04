@@ -1,11 +1,11 @@
+import 'package:bookly/config/di/di.dart';
 import 'package:bookly/core/colors/colors.dart';
 import 'package:bookly/config/app_routers/app_routers.dart';
-import 'package:bookly/config/service_locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  setupServiceLocator();
+   configureDependencies();
   runApp(const Bookly());
 }
 

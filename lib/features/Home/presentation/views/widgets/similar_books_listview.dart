@@ -25,10 +25,9 @@ class SimilarBooksListView extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 5),
                   child: FeaturedBookImageItem(
-                    bookItem: state.getSimilarBooksState.data!.items![index],
-                    imageUrl: state.getSimilarBooksState.data!.items![index]
-                            .volumeInfo.imageLinks?.thumbnail ??
-                        '',
+                    bookItem: state.getSimilarBooksState.data!.items[index],
+                    imageUrl: state.getSimilarBooksState.data!.items[index]
+                        .volumeInfo.imageLink,
                   ),
                 );
               },
@@ -36,7 +35,7 @@ class SimilarBooksListView extends StatelessWidget {
           ),
         );
       } else if (state.getSimilarBooksState.errorMessage != null) {
-        return Errorwidget(message: state.getSimilarBooksState.errorMessage!);
+        return ShowErrorWidget(message: state.getSimilarBooksState.errorMessage!);
       } else {
         return const Center(child: CircularProgressIndicator());
       }

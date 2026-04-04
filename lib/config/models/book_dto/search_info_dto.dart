@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class SearchInfo extends Equatable {
+class SearchInfoDto extends Equatable {
   final String? textSnippet;
 
-  const SearchInfo({this.textSnippet});
+  const SearchInfoDto({this.textSnippet});
 
-  factory SearchInfo.fromJson(Map<String, dynamic> json) => SearchInfo(
+  factory SearchInfoDto.fromJson(Map<String, dynamic> json) => SearchInfoDto(
         textSnippet: json['textSnippet'] as String?,
       );
 

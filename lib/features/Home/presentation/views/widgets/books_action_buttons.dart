@@ -1,7 +1,7 @@
-import 'package:bookly/config/models/book_model/item.dart';
 import 'package:bookly/core/strings/app_strings.dart';
 import 'package:bookly/core/utils/functions/show_snack_bar.dart';
 import 'package:bookly/core/widgets/custom_text_button.dart';
+import 'package:bookly/features/Home/domain/models/items_model.dart';
 import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_cubit.dart';
 import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_states.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BooksActionButtons extends StatelessWidget {
   const BooksActionButtons({super.key, required this.itemModel});
-  final Item itemModel;
+  final ItemsModel itemModel;
 
   @override
   Widget build(BuildContext context) {
