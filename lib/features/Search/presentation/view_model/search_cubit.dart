@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:bookly/config/base_state/base_state.dart';
 import 'package:bookly/config/models/book_models/book_model.dart';
 import 'package:bookly/features/Search/domain/use_cases/search_use_case.dart';
@@ -31,7 +29,7 @@ class SearchCubit extends Cubit<SearchState> {
       _debounce!.cancel();
     }
 
-    _debounce = Timer(const Duration(milliseconds: 800), () {
+    _debounce = Timer(const Duration(milliseconds: 600), () {
       if (query.trim().isNotEmpty) {
         fetchSearchBooks(query: query);
       } else {

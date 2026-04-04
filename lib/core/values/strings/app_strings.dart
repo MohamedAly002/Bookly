@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String appName = 'Bookly';
   static const String splashSlidingText = 'Read Free Books';
   static const String newestBooktitle = 'Newest Books';
   static const String freeprice = 'Free';
