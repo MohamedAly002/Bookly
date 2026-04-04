@@ -35,7 +35,8 @@ class SimilarBooksListView extends StatelessWidget {
           ),
         );
       } else if (state.getSimilarBooksState.errorMessage != null) {
-        return ShowErrorWidget(message: state.getSimilarBooksState.errorMessage!);
+        return ShowErrorWidget(
+            message: state.getSimilarBooksState.errorMessage!);
       } else {
         return const Center(child: CircularProgressIndicator());
       }

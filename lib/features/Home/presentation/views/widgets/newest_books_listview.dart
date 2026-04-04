@@ -1,7 +1,7 @@
 import 'package:bookly/config/errors/error_widget.dart';
 import 'package:bookly/features/Home/presentation/view_model/home_cubit/home_cubit.dart';
 import 'package:bookly/features/Home/presentation/view_model/home_cubit/home_cubit_states.dart';
-import 'package:bookly/features/Home/presentation/views/widgets/newest_book_item.dart';
+import 'package:bookly/core/widgets/book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,11 +15,11 @@ class NewestBooksListView extends StatelessWidget {
         if (state.getNewestBooks.data != null) {
           return SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: state.getNewestBooks.data!.items!.length,
+              childCount: state.getNewestBooks.data!.items.length,
               (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: NewestBookItem(
-                  bookItem: state.getNewestBooks.data!.items![index],
+                child: BookItem(
+                  bookItem: state.getNewestBooks.data!.items[index],
                 ),
               ),
             ),

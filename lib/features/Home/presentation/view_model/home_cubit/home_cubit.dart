@@ -1,14 +1,15 @@
-import 'package:bookly/features/Home/domain/repo/home_repo_contract.dart';
 import 'package:bookly/features/Home/domain/use_cases/get_featured_books_use_case.dart';
 import 'package:bookly/features/Home/domain/use_cases/get_newest_books_use_case.dart';
 import 'package:bookly/features/Home/presentation/view_model/home_cubit/home_cubit_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 @injectable
 class HomeCubit extends Cubit<HomeCubitStates> {
-  HomeCubit(this.getFeaturedBooksUseCase, this.getNewestBooksUseCase) : super(HomeCubitStates());
-final GetFeaturedBooksUseCase getFeaturedBooksUseCase;
-final GetNewestBooksUseCase getNewestBooksUseCase;
+  HomeCubit(this.getFeaturedBooksUseCase, this.getNewestBooksUseCase)
+      : super(HomeCubitStates());
+  final GetFeaturedBooksUseCase getFeaturedBooksUseCase;
+  final GetNewestBooksUseCase getNewestBooksUseCase;
   void init() {
     fetchFeaturedBooks();
     fetchNewestBooks();

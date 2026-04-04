@@ -1,4 +1,4 @@
-import 'package:bookly/features/Home/domain/models/books_details.dart';
+import 'package:bookly/config/models/book_models/books_details.dart';
 import 'package:equatable/equatable.dart';
 
 import 'image_links_dto.dart';
@@ -128,15 +128,16 @@ class VolumeInfoDto extends Equatable {
       canonicalVolumeLink,
     ];
   }
-  BooksDetails todomain(){
+
+  BooksDetails todomain() {
     return BooksDetails(
-      authors: authors??['unknown'],
-      title: title??'Unknown Title',
-      imageLink:imageLinks?.thumbnail??'',
-      previewLink:previewLink??'',
-      averageRating:averageRating??0.0,
-      ratingsCount: ratingsCount??0,
-      categories: categories??[],
+      authors: authors ?? ['unknown'],
+      title: title ?? 'Unknown Title',
+      imageLink: imageLinks?.thumbnail ?? '',
+      previewLink: previewLink ?? '',
+      averageRating: averageRating ?? 0.0,
+      ratingsCount: ratingsCount ?? 0,
+      categories: categories ?? [],
     );
   }
 }

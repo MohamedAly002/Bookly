@@ -1,9 +1,9 @@
-
 import 'package:bookly/features/Home/domain/use_cases/get_similar_books_use_case.dart';
 import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 @injectable
 class BooksDetailsCubit extends Cubit<BooksDetailsStates> {
   BooksDetailsCubit(this.getSimilarBooksUseCase) : super(BooksDetailsStates());

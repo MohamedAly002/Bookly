@@ -9,7 +9,7 @@ class CustomTextButton extends StatelessWidget {
     required this.borderRadius,
     required this.textColor,
     this.onPressed,
-    this.isloading=false,
+    this.isloading = false,
   });
   final String text;
   final Color textColor;
@@ -17,22 +17,24 @@ class CustomTextButton extends StatelessWidget {
   final BorderRadius borderRadius;
   final void Function()? onPressed;
   final bool isloading;
-  
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
-     onPressed: isloading ? null : onPressed,
+      onPressed: isloading ? null : onPressed,
       style: TextButton.styleFrom(
         backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: isloading?const CircularProgressIndicator():Text(
-          text,
-          style: Styles.textStyle18
-              .copyWith(fontWeight: FontWeight.bold, color: textColor),
-        ),
+        child: isloading
+            ? const CircularProgressIndicator()
+            : Text(
+                text,
+                style: Styles.textStyle18
+                    .copyWith(fontWeight: FontWeight.bold, color: textColor),
+              ),
       ),
     );
   }

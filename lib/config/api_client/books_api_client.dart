@@ -2,6 +2,7 @@ import 'package:bookly/core/values/endpoints/api_endpoints.dart';
 import 'package:bookly/keys/api_key.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+
 @injectable
 class BooksApiClient {
   final Dio _dio;

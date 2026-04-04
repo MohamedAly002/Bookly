@@ -1,4 +1,4 @@
-import 'package:bookly/features/Home/domain/models/items_model.dart';
+import 'package:bookly/config/models/book_models/items_model.dart';
 import 'package:equatable/equatable.dart';
 
 import 'access_info_dto.dart';

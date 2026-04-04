@@ -1,6 +1,5 @@
 import 'package:bookly/config/di/di.dart';
-import 'package:bookly/features/Home/domain/models/items_model.dart';
-import 'package:bookly/features/Home/domain/use_cases/get_similar_books_use_case.dart';
+import 'package:bookly/config/models/book_models/items_model.dart';
 import 'package:bookly/features/Home/presentation/view_model/books_details_cubit/books_details_cubit.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/book_details_view_body.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +17,8 @@ class _BookDetailsViewState extends State<BookDetailsView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt.get<BooksDetailsCubit>()..
-        fetchSimilarBooks(
-            category: widget.bookItem.volumeInfo.categories[0]),
+      create: (context) => getIt.get<BooksDetailsCubit>()
+        ..fetchSimilarBooks(category: widget.bookItem.volumeInfo.categories[0]),
       child: SafeArea(
         child: Scaffold(
           body: BookDetailsViewBody(

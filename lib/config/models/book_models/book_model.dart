@@ -1,4 +1,3 @@
-
 import 'items_model.dart';
 
 class BooksModel {

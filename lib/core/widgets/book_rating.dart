@@ -34,7 +34,7 @@ class BookRating extends StatelessWidget {
           width: 6,
         ),
         Text(
-          "(${ratingcount??"0"})",
+          "(${ratingcount ?? "0"})",
           style: Styles.textStyle14.copyWith(color: Colors.grey.shade400),
         ),
       ],

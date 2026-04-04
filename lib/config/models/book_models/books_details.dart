@@ -13,6 +13,7 @@ class BooksDetails {
     required this.imageLink,
     required this.previewLink,
     required this.averageRating,
-    required this.ratingsCount, required this.categories,
+    required this.ratingsCount,
+    required this.categories,
   });
 }

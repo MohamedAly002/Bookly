@@ -1,6 +1,5 @@
 import 'package:bookly/config/base_state/base_state.dart';
-import 'package:bookly/config/models/book_dto/book_model_dto.dart';
-import 'package:bookly/features/Home/domain/models/book_model.dart';
+import 'package:bookly/config/models/book_models/book_model.dart';
 
 class BooksDetailsStates {
   BaseState<BooksModel> getSimilarBooksState = BaseState<BooksModel>(
