@@ -3,6 +3,7 @@ import 'package:bookly/core/values/assets/assets_paths.dart';
 import 'package:bookly/features/Splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -51,12 +52,33 @@ class _SplashViewBodyState extends State<SplashViewBody>
     });
   }
 
-  void initSlidingText() {
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(animationController);
-    animationController.forward();
-  }
+
+ void initSlidingText() {
+  animationController = AnimationController(
+    vsync: this, 
+    duration: const Duration(seconds: 1), 
+  );
+
+  slidingAnimation = Tween<Offset>(
+    begin: const Offset(0, 3), 
+    end: Offset.zero,
+  ).animate(CurvedAnimation(
+    parent: animationController,
+    curve: Curves.easeInOut,
+  ));
+
+  // The Fix: Wait for the frame, then wait a tiny bit more for the engine to settle
+  WidgetsBinding.instance.addPostFrameCallback((_) async {
+    // 1. Give the app a moment to finish loading resources
+    await Future.delayed(const Duration(milliseconds: 100));
+    
+    // 2. Remove the native splash screen
+    FlutterNativeSplash.remove();
+    
+    // 3. Start the animation
+    if (mounted) {
+      animationController.forward();
+    }
+  });
+}
 }
