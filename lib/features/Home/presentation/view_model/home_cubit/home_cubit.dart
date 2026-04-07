@@ -26,12 +26,14 @@ class HomeCubit extends Cubit<HomeCubitStates> {
       emit(state.copyWith(
         getFeaturedBooks: state.getFeaturedBooks.copyWith(
           errorMessageParam: failure.errormessage,
+          isLoadingParam: false,
         ),
       ));
     }, (books) {
       emit(state.copyWith(
         getFeaturedBooks: state.getFeaturedBooks.copyWith(
           dataParam: books,
+          isLoadingParam: false,
         ),
       ));
     });
@@ -45,12 +47,14 @@ class HomeCubit extends Cubit<HomeCubitStates> {
       emit(state.copyWith(
         getNewestBooks: state.getNewestBooks.copyWith(
           errorMessageParam: failure.errormessage,
+          isLoadingParam: false,
         ),
       ));
     }, (books) {
       emit(state.copyWith(
         getNewestBooks: state.getNewestBooks.copyWith(
           dataParam: books,
+          isLoadingParam: false,
         ),
       ));
     });
