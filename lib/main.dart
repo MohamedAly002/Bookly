@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  
+
   // 2. Preserve the native splash screen
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   configureDependencies();

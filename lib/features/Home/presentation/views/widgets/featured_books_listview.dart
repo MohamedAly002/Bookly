@@ -31,9 +31,9 @@ class FeaturedBooksListView extends StatelessWidget {
             ),
           );
         } else if (state.getFeaturedBooks.errorMessage != null) {
-          return SliverToBoxAdapter(
-              child: ShowErrorWidget(
-                  message: state.getFeaturedBooks.errorMessage!));
+          return ShowErrorWidget(
+            message: state.getFeaturedBooks.errorMessage!,
+          );
         } else {
           return const Center(child: CircularProgressIndicator());
         }

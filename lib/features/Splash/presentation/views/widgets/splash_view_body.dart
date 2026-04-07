@@ -52,33 +52,33 @@ class _SplashViewBodyState extends State<SplashViewBody>
     });
   }
 
+  void initSlidingText() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
 
- void initSlidingText() {
-  animationController = AnimationController(
-    vsync: this, 
-    duration: const Duration(seconds: 1), 
-  );
+    slidingAnimation = Tween<Offset>(
+      begin: const Offset(0, 3),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeInOut,
+    ));
 
-  slidingAnimation = Tween<Offset>(
-    begin: const Offset(0, 3), 
-    end: Offset.zero,
-  ).animate(CurvedAnimation(
-    parent: animationController,
-    curve: Curves.easeInOut,
-  ));
+    // The Fix: Wait for the frame, then wait a tiny bit more for the engine to settle
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // 1. Wait long enough for the native transition to finish
+      await Future.delayed(const Duration(milliseconds: 250));
 
-  // The Fix: Wait for the frame, then wait a tiny bit more for the engine to settle
-  WidgetsBinding.instance.addPostFrameCallback((_) async {
-    // 1. Give the app a moment to finish loading resources
-    await Future.delayed(const Duration(milliseconds: 100));
-    
-    // 2. Remove the native splash screen
-    FlutterNativeSplash.remove();
-    
-    // 3. Start the animation
-    if (mounted) {
-      animationController.forward();
-    }
-  });
-}
+      // 2. Clear the native splash
+      FlutterNativeSplash.remove();
+
+      // 3. Kick off the animation
+      if (mounted) {
+        animationController.reset(); // Force start at 0
+        animationController.forward();
+      }
+    });
+  }
 }
