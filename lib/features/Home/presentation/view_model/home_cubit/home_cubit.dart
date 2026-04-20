@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 @injectable
 class HomeCubit extends Cubit<HomeCubitStates> {
   HomeCubit(this.getFeaturedBooksUseCase, this.getNewestBooksUseCase)
-      : super(HomeCubitStates());
+      : super(const HomeCubitStates());
   final GetFeaturedBooksUseCase getFeaturedBooksUseCase;
   final GetNewestBooksUseCase getNewestBooksUseCase;
   void init() {

@@ -6,7 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 @injectable
 class BooksDetailsCubit extends Cubit<BooksDetailsStates> {
-  BooksDetailsCubit(this.getSimilarBooksUseCase) : super(BooksDetailsStates());
+  BooksDetailsCubit(this.getSimilarBooksUseCase)
+      : super(const BooksDetailsStates());
 
   final GetSimilarBooksUseCase getSimilarBooksUseCase;
   Future<void> fetchSimilarBooks({required String category}) async {

@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class SearchCubit extends Cubit<SearchState> {
-  SearchCubit(this.searchUseCase) : super(SearchState());
+  SearchCubit(this.searchUseCase) : super(const SearchState());
   SearchUseCase searchUseCase;
   Timer? _debounce;
   Future<void> fetchSearchBooks({required String query}) async {
@@ -40,7 +40,7 @@ class SearchCubit extends Cubit<SearchState> {
 
   void clearSearch() {
     emit(state.copyWith(
-      searchState: BaseState<BooksModel>(
+      searchState: const BaseState<BooksModel>(
         isLoading: false,
         data: null,
         errorMessage: null,

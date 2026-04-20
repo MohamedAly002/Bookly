@@ -1,22 +1,15 @@
 import 'package:bookly/config/base_state/base_state.dart';
 import 'package:bookly/config/models/book_models/book_model.dart';
+import 'package:equatable/equatable.dart';
 
-class BooksDetailsStates {
-  BaseState<BooksModel> getSimilarBooksState = BaseState<BooksModel>(
-    isLoading: true,
-  );
-  BaseState<BooksModel> previewBookState = BaseState<BooksModel>(
-    isLoading: false,
-  );
+class BooksDetailsStates extends Equatable {
+  final BaseState<BooksModel> getSimilarBooksState;
+  final BaseState<BooksModel> previewBookState;
 
-  BooksDetailsStates({
-    getSimilarBooksState,
-    previewBookState,
-  }) {
-    this.getSimilarBooksState =
-        getSimilarBooksState ?? this.getSimilarBooksState;
-    this.previewBookState = previewBookState ?? this.previewBookState;
-  }
+  const BooksDetailsStates({
+    this.getSimilarBooksState = const BaseState(),
+    this.previewBookState = const BaseState(),
+  });
 
   BooksDetailsStates copyWith({
     final BaseState<BooksModel>? getSimilarBooksState,
@@ -27,4 +20,7 @@ class BooksDetailsStates {
       previewBookState: previewBookState ?? this.previewBookState,
     );
   }
+
+  @override
+  List<Object?> get props => [getSimilarBooksState, previewBookState];
 }

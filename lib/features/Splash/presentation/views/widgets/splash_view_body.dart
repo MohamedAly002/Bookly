@@ -66,17 +66,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
       curve: Curves.easeInOut,
     ));
 
-    // The Fix: Wait for the frame, then wait a tiny bit more for the engine to settle
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // 1. Wait long enough for the native transition to finish
       await Future.delayed(const Duration(milliseconds: 250));
 
-      // 2. Clear the native splash
       FlutterNativeSplash.remove();
 
-      // 3. Kick off the animation
       if (mounted) {
-        animationController.reset(); // Force start at 0
+        animationController.reset();
         animationController.forward();
       }
     });
